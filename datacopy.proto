@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+message Response { string data = 1; }
+
+message Request { string key=1; string data = 2; }
+
+message SyncRequest{ }
+
+message SyncOperation {
+    string op = 1;
+    string key = 2;
+    string data = 3;
+}
+
+service datacopy { 
+    rpc sync(SyncRequest) returns (Response) { }
+    rpc put(Request) returns (Response) { }
+    rpc get(Request) returns (Response) {}
+    rpc delete(Request) returns (Response) { }
+
+}
+
+
